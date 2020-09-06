@@ -1,0 +1,31 @@
+<mat-toolbar>
+    <span>{{productService.form.controls['Id'].value?"Modify Product":"New Product"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+  <form [formGroup]="productService.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+      <mat-grid-tile>
+        <div class="controles-container">
+
+          <input type="hidden" formControlName="Id">
+
+          <mat-form-field>
+            <input type="text" formControlName="Name" matInput placeholder="Product Name*">
+            <mat-error>Product Name is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="number" formControlName="Rate" matInput placeholder="Unit Price">
+            <mat-error>Rate is required.</mat-error>
+          </mat-form-field>
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="productService.form.invalid">Submit</button>
+            <button type="button" mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>

@@ -12,16 +12,26 @@
 
   <div class="mat-elevation-z8">
 
-    <mat-table [dataSource]="listProduct" matSort>
+    <mat-table [dataSource]="listCustomer" matSort>
 
-     <ng-container matColumnDef="Name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.Name}}</mat-cell>
+     <ng-container matColumnDef="Firstname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Firstname}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Rate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Product Rate</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.Rate}}</mat-cell>
+      <ng-container matColumnDef="Lastname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Lastname}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Address}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PhoneNumber">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.PhoneNumber}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="Actions">
@@ -33,13 +43,13 @@
       </ng-container>
 
       <ng-container matColumnDef="loading">
-        <mat-footer-cell *matFooterCellDef colspan="3">
+        <mat-footer-cell *matFooterCellDef colspan="5">
           Loading data...
         </mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="noData">
-        <mat-footer-cell *matFooterCellDef colspan="3">
+        <mat-footer-cell *matFooterCellDef colspan="5">
           No data.
         </mat-footer-cell>
       </ng-container>
@@ -47,8 +57,8 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listProduct!=null}"></mat-footer-row>
-      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listProduct!=null && listProduct.data.length==0)}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listCustomer!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listCustomer!=null && listCustomer.data.length==0)}"></mat-footer-row>
     
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>

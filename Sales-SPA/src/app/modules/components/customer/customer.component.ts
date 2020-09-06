@@ -1,53 +1,53 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../../services/product.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { Product } from '../../models/product';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ProductCreateComponent } from './product-create/product-create.component';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
+import { Customer } from '../../models/customer';
+import { CustomerService } from '../../services/customer.service';
+import { CustomerCreateComponent } from './customer-create/customer-create.component';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-customer',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css']
 })
-export class ProductComponent implements OnInit {
+export class CustomerComponent implements OnInit {
 
   searchKey: string;
-  listProduct: MatTableDataSource<Product>;
+  listCustomer: MatTableDataSource<Customer>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = ['Name', 'Rate', 'Actions'];
+  displayedColumns: string[] = ['Firstname', 'Lastname', 'Address', 'PhoneNumber', 'Actions'];
 
-  constructor(private productService: ProductService,
+  constructor(private customerService: CustomerService,
               private dialog: MatDialog,
               private notificationService: NotificationService,
               private dialogService: DialogService) {
    }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getCustomers();
   }
 
-  getProducts() {
-    return this.productService.GetAllProducts()
+  getCustomers() {
+    return this.customerService.GetAllCustomers()
       .subscribe(res => {
-        this.listProduct = new MatTableDataSource(res);
-        this.listProduct.sort = this.sort;
-        this.listProduct.paginator = this.paginator;
+        this.listCustomer = new MatTableDataSource(res);
+        this.listCustomer.sort = this.sort;
+        this.listCustomer.paginator = this.paginator;
       });
   }
 
   onCreate() {
-    this.productService.initializeFormGroup();
+    this.customerService.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(ProductCreateComponent, dialogConfig);
+    this.dialog.open(CustomerCreateComponent, dialogConfig);
   }
 
   onSearchClear() {
@@ -56,23 +56,23 @@ export class ProductComponent implements OnInit {
   }
 
   applyFilter() {
-     this.listProduct.filter = this.searchKey.trim().toLowerCase();
+     this.listCustomer.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onEdit(row: Product) {
-    this.productService.populateForm(row);
+  onEdit(row: Customer) {
+    this.customerService.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
-    this.dialog.open(ProductCreateComponent, dialogConfig);
+    this.dialog.open(CustomerCreateComponent, dialogConfig);
   }
 
-  onDelete(row: Product) {
+  onDelete(row: Customer) {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res => {
       if (res) {
-        this.productService.DeleteProduct(row.Id)
+        this.customerService.DeleteCustomer(row.Id)
          .subscribe(() => {
           this.notificationService.warn('! Deleted successfully');
           this.ngOnInit();
@@ -80,6 +80,5 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-
 
 }
