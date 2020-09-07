@@ -37,6 +37,11 @@ export class CustomerService {
     return this.apiService.get(`api/customers`);
   }
 
+  // get all customers with payment cleared
+  GetCustomersWithoutSales() {
+    return this.apiService.get(`api/customers/GetCustomersWithoutSales`);
+  }
+
    // Save a new customer
   SaveCustomer(customer: Customer) {
     return this.apiService.post('api/customers', customer);

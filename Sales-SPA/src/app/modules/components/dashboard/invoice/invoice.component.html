@@ -1,0 +1,58 @@
+<div class="search-div">
+    <div class="mat-subheading-2">Invoice Item Details</div>
+  </div>
+
+  <div class="mat-elevation-z8">
+
+    <mat-table [dataSource]="listItems" matSort>
+
+     <ng-container matColumnDef="Product">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Product</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Product}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Quantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Quantity}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Rate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Rate</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Rate}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Amount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Amount}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="5">
+          Loading data...
+        </mat-footer-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="noData">
+        <mat-footer-cell *matFooterCellDef colspan="5">
+          No data.
+        </mat-footer-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listItems!=null}"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listItems!=null && listItems.data.length==0)}"></mat-footer-row>
+    
+    </mat-table>
+
+    
+  </div>
+
+  <div style="margin-top: 10px; float: right;">
+    <button mat-raised-button color="primary" [routerLink]="'/'" >
+        Back
+     </button>
+  </div>
+
+  

@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
 })
-export class ProductCreateComponent implements OnInit, OnDestroy {
+export class ProductCreateComponent implements OnInit {
   product: Product;
 
   constructor(public productService: ProductService,
@@ -32,7 +32,7 @@ export class ProductCreateComponent implements OnInit, OnDestroy {
       // Add Product
       this.productService.SaveProduct(this.product)
       .subscribe(() => {
-        this.notificationService.success(':: Submitted successfully');
+        this.notificationService.success(':: Added successfully');
         this.productService.form.reset();
         this.productService.initializeFormGroup();
         this.onClose();
@@ -60,10 +60,6 @@ export class ProductCreateComponent implements OnInit, OnDestroy {
     this.productService.form.reset();
     this.productService.initializeFormGroup();
     this.dialogRef.close();
-  }
-
-  ngOnDestroy() {
-    // unsubscribe observables
   }
 
 }

@@ -1,0 +1,27 @@
+button.mat-raised-button {
+    margin: 5px;
+}
+
+.table-div {
+    width: 750px; 
+    float: left; 
+    height: 460px; 
+    margin: 5px;
+}
+
+.button-div {
+    float: right; 
+    padding: 10px;
+}
+
+.product-div {
+    width: 220px; 
+    float: right; 
+    height: 460px; 
+    margin-top: 5px;
+}
+
+.main-div {
+    height: 480px; 
+    width: auto;
+}

@@ -7,6 +7,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 
 @NgModule({
@@ -14,13 +17,17 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    LoginComponent,
+    AccessDeniedComponent
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

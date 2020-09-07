@@ -34,7 +34,7 @@ export class CustomerCreateComponent implements OnInit {
       // Add Product
       this.customerService.SaveCustomer(this.customer)
       .subscribe(() => {
-        this.notificationService.success(':: Submitted successfully');
+        this.notificationService.success(':: Added successfully');
         this.customerService.form.reset();
         this.customerService.initializeFormGroup();
         this.onClose();

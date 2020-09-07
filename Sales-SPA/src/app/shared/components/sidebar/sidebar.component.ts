@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserResource } from '../../models/user-resource';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  currentUser: UserResource;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }

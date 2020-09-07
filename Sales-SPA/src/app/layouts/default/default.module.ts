@@ -13,6 +13,9 @@ import { ProductCreateComponent } from 'src/app/modules/components/product/produ
 import { ApiService } from 'src/app/shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerCreateComponent } from 'src/app/modules/components/customer/customer-create/customer-create.component';
+import { SalesCreateComponent } from 'src/app/modules/components/dashboard/sales-create/sales-create.component';
+import { SalesEditComponent } from 'src/app/modules/components/dashboard/sales-edit/sales-edit.component';
+import { InvoiceComponent } from 'src/app/modules/components/dashboard/invoice/invoice.component';
 
 
 
@@ -23,7 +26,10 @@ import { CustomerCreateComponent } from 'src/app/modules/components/customer/cus
     ProductComponent,
     CustomerComponent,
     ProductCreateComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    SalesCreateComponent,
+    SalesEditComponent,
+    InvoiceComponent
   ],
   imports: [
     CommonModule,
